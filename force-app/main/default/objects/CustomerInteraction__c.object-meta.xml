@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <label>Customer Interaction</label>
+    <pluralLabel>Customer Interactions</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+
+    <nameField>
+        <label>Customer Interaction</label>
+        <type>AutoNumber</type>
+        <displayFormat>CI-{000000}</displayFormat>
+        <startingNumber>1</startingNumber>
+    </nameField>
+
+    <!-- Contact Lookup -->
+    <fields>
+        <fullName>Contact__c</fullName>
+        <label>Contact</label>
+        <type>Lookup</type>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>CustomerInteractions</relationshipName>
+    </fields>
+
+    <!-- Channel Picklist -->
+    <fields>
+        <fullName>Channel__c</fullName>
+        <label>Channel</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+
+                <value>
+                    <fullName>WhatsApp</fullName>
+                    <default>true</default>
+                    <label>WhatsApp</label>
+                </value>
+
+                <value>
+                    <fullName>SMS</fullName>
+                    <label>SMS</label>
+                </value>
+
+                <value>
+                    <fullName>Email</fullName>
+                    <label>Email</label>
+                </value>
+
+                <value>
+                    <fullName>WebChat</fullName>
+                    <label>Web Chat</label>
+                </value>
+
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+
+    <!-- Customer Message -->
+    <fields>
+        <fullName>Message__c</fullName>
+        <label>Customer Message</label>
+        <type>LongTextArea</type>
+        <length>32000</length>
+        <visibleLines>5</visibleLines>
+    </fields>
+
+    <!-- AI Response -->
+    <fields>
+        <fullName>AI_Response__c</fullName>
+        <label>AI Response</label>
+        <type>LongTextArea</type>
+        <length>32000</length>
+        <visibleLines>5</visibleLines>
+    </fields>
+
+    <!-- Sentiment Score -->
+    <fields>
+        <fullName>Sentiment_Score__c</fullName>
+        <label>Sentiment Score</label>
+        <type>Percent</type>
+        <precision>3</precision>
+        <scale>2</scale>
+    </fields>
+
+    <!-- Churn Risk -->
+    <fields>
+        <fullName>Churn_Risk__c</fullName>
+        <label>Churn Risk</label>
+        <type>Percent</type>
+        <precision>3</precision>
+        <scale>2</scale>
+    </fields>
+
+</CustomObject>

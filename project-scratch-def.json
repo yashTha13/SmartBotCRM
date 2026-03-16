@@ -1,0 +1,21 @@
+{
+  "orgName": "SmartCRM Assistant",
+  "edition": "Developer",
+  "features": [
+    "EnableEinsteinBots",
+    "MultiCurrency",
+    "Chatbot",
+    "ServiceCloud"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "chatSettings": {
+      "enableChat": true
+    },
+    "einsteinSettings": {
+      "enableEinsteinService": true
+    }
+  }
+}

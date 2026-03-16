@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="AI Insights Dashboard">
+
+        <div class="slds-grid slds-gutters">
+
+            <!-- Churn Chart -->
+            <div class="slds-col">
+                <lightning-card title="Churn Risk">
+                    <canvas lwc:dom="manual" class="chart"></canvas>
+                </lightning-card>
+            </div>
+
+            <!-- High Risk Accounts -->
+            <div class="slds-col">
+                <lightning-datatable
+                    key-field="Id"
+                    data={highRiskAccounts}
+                    columns={columns}>
+                </lightning-datatable>
+            </div>
+
+        </div>
+
+    </lightning-card>
+</template>

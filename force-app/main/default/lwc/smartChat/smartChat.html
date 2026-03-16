@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="🤖 SmartCRM Assistant" icon-name="standard:messaging_user">
+        <div class="chat-container">
+            <!-- Messages -->
+            <div class="messages" if:true={messages}>
+                <template for:each={messages} for:item="msg">
+                    <div key={msg.id} class={msg.type}>
+                        <p>{msg.text}</p>
+                        <small>{msg.time}</small>
+                    </div>
+                </template>
+            </div>
+            
+            <!-- Input -->
+            <div class="chat-input">
+                <lightning-input 
+                    type="text" 
+                    placeholder="Type your message..."
+                    value={newMessage}
+                    onchange={handleInputChange}
+                    onkeypress={handleKeyPress}>
+                </lightning-input>
+                <lightning-button 
+                    label="Send" 
+                    onclick={handleSend}
+                    variant="brand"
+                    disabled={isLoading}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

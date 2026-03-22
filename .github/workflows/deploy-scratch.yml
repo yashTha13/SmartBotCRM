@@ -1,0 +1,31 @@
+name: Deploy to Salesforce
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Salesforce CLI
+      run: |
+        npm install --global @salesforce/cli
+
+    - name: Authenticate Org
+      run: |
+        echo "${{ secrets.SF_AUTH_URL }}" > auth.txt
+        sf org login sfdx-url -f auth.txt -a ci-org
+
+    - name: Deploy to Org
+      run: |
+        sf project deploy start --target-org ci-org
+
+    - name: Run Tests
+      run: |
+        sf apex run test --target-org ci-org --result-format human

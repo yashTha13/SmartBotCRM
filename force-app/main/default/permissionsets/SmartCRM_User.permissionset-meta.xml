@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <!-- REQUIRED -->
+    <label>SmartCRM User</label>
+
+    <hasActivationRequired>false</hasActivationRequired>
+
+    <!-- Object Access -->
+    <objectPermissions>
+        <object>CustomerInteraction__c</object>
+        <allowCreate>true</allowCreate>
+        <allowRead>true</allowRead>
+        <allowEdit>true</allowEdit>
+        <allowDelete>false</allowDelete>
+    </objectPermissions>
+
+    <!-- Apex Class Access -->
+    <classAccesses>
+        <apexClass>ChurnPredictor</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <classAccesses>
+        <apexClass>SentimentAnalyzer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <classAccesses>
+        <apexClass>TwilioSMSHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <classAccesses>
+        <apexClass>WhatsAppHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+</PermissionSet>

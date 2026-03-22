@@ -1,0 +1,30 @@
+@isTest
+public class TestDataFactory {
+
+    public static List<Account> createAccounts(Integer count){
+        List<Account> accs = new List<Account>();
+
+        for(Integer i=0; i<count; i++){
+            accs.add(new Account(
+                Name = 'Test Account ' + i,
+                NumSupportCases__c = i
+            ));
+        }
+
+        insert accs;
+        return accs;
+    }
+
+    public static List<CustomerInteraction__c> createInteractions(Integer count){
+        List<CustomerInteraction__c> listData = new List<CustomerInteraction__c>();
+
+        for(Integer i=0; i<count; i++){
+            listData.add(new CustomerInteraction__c(
+                Message__c = (i % 2 == 0) ? 'good service' : 'bad service'
+            ));
+        }
+
+        insert listData;
+        return listData;
+    }
+}

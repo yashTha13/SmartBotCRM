@@ -1,30 +1,31 @@
 public class SentimentAnalyzer {
 
     @future
-    public static void analyzeConversation(String conversationId){
+    public static void bulkAnalyze(List<String> conversationIds){
 
-        CustomerInteraction__c conv = [
+        List<CustomerInteraction__c> records = [
             SELECT Id, Message__c
             FROM CustomerInteraction__c
-            WHERE Id = :conversationId
+            WHERE Id IN :conversationIds
         ];
 
-        Decimal sentimentScore;
+        for(CustomerInteraction__c conv : records){
 
-        if(conv.Message__c != null && conv.Message__c.contains('bad')){
-            sentimentScore = -0.8;
+            Decimal score;
+
+            if(conv.Message__c != null && conv.Message__c.contains('bad')){
+                score = -0.8;
+            }
+            else if(conv.Message__c != null && conv.Message__c.contains('good')){
+                score = 0.8;
+            }
+            else{
+                score = 0;
+            }
+
+            conv.SentimentScore__c = score;
         }
-        else if(conv.Message__c != null && conv.Message__c.contains('good')){
-            sentimentScore = 0.8;
-        }
-        else{
-            sentimentScore = 0.0;
-        }
 
-        conv.SentimentScore__c = sentimentScore;
-
-        update conv;
-
+        update records; // ONE DML ✔
     }
-
 }

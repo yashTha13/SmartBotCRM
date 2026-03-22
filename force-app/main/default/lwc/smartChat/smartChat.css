@@ -56,3 +56,23 @@ small {
 .chat-input lightning-input {
     flex: 1;
 }
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 5px;
+    }
+
+    .messages {
+        font-size: 14px;
+    }
+}
